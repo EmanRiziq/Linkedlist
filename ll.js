@@ -38,15 +38,13 @@ class LinkedList {
         this.length += 1;
     }
     printlist() {
-        let str="";
+        let str = "";
         if (this.length > 0) {
             let currentNode = this.head;
 
             for (let i = 0; i < this.length; i++) {
-                str +=`${currentNode.value} -> `
-             
+                str += `${currentNode.value} -> `
                 currentNode = currentNode.next;
-
             }
             console.log(str)
         }
@@ -76,6 +74,27 @@ class LinkedList {
                     this.length -= 1;
                 }
 
+        }
+    }
+
+    insertat(loc, val) {
+        if (loc > this.length) {
+            this.append(val)
+        }
+        else {
+            if (this.length == 1 || loc == 0) {
+                this.insert(val)
+            }
+            else {
+                const node = new Node(val);
+                let currentNode = this.head;
+                for (let i = 1; i < loc - 1; i++) {
+                    currentNode = currentNode.next;
+                }
+                node.next = currentNode.next;
+                currentNode.next = node;
+                this.length += 1;
+            }
         }
     }
 

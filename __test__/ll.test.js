@@ -107,5 +107,46 @@ describe('Delete from the middle of Linked List', () => {
         expect(ll.tail.next).toBeNull();
         expect(ll.length).toEqual(3);
     })
+})
+
+describe('Insert into specific location of Linked List', () => {
+    it('insert into a location LARGER from the linked list size', () => {
+        const ll = new LinkedList();
+        ll.insert('a');
+        ll.insert('b');
+        ll.insertat(3, 'x');
+        expect(ll.length).toEqual(3);
+        expect(ll.tail.value).toEqual('x');
+    })
+
+    it('insert into a location when the linked list have only one node', () => {
+        const ll = new LinkedList();
+        ll.insert('a');
+        ll.insertat(1, 'x');
+        expect(ll.length).toEqual(2);
+        expect(ll.head.value).toEqual('x');
+    })
+
+    it('insert into a location 0 from the linked list ', () => {
+        const ll = new LinkedList();
+        ll.insert('a');
+        ll.insert('b');
+        ll.insert('c');
+        ll.insertat(0, 'x');
+        expect(ll.length).toEqual(4);
+        expect(ll.head.value).toEqual('x');
+    })
+
+    it('insert into any other location from the linked list ', () => {
+        const ll = new LinkedList();
+        ll.insert('a');
+        ll.insert('b');
+        ll.insert('c');
+        ll.insertat(2, 'x');
+        expect(ll.length).toEqual(4); 
+        expect(ll.head.next.value).toEqual('x');
+        expect(ll.head.next.next.value).toEqual('b');
+
+    })
 
 })
